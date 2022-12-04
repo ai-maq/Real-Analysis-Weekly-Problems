@@ -1,0 +1,256 @@
+\documentclass[addpoints]{exam}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\usepackage{venndiagram}
+\usepackage{graphicx}
+
+% Header and footer.
+\pagestyle{headandfoot}
+\runningheadrule
+\runningfootrule
+\runningheader{Real Analysis}{Week 13 Problems}{}
+\runningfooter{}{Page \thepage\ of \numpages}{}
+\firstpageheader{}{}{}
+
+\boxedpoints
+\printanswers
+\qformat{}
+
+\newcommand\union\cup
+\newcommand\inter\cap
+
+\title{Week 13 Problems\\ Real Analysis}
+\author{Ali Muhammad Asad}
+
+\begin{document}
+\maketitle
+
+\begin{questions}
+    \question
+    \textbf{Exercise 7.4 Problem 2} \\ If $S$ is a set that is bounded above, show that $sup$ $S$ is either an element of S or is a cluster point of $S$.
+    \begin{solution}
+        Let $s$ be $sup$ $S$. Then if $s = sup$ $S$, and $s \in S$, then we are done.
+
+        % Assume $s \notin S$, and $s$ is not a cluster point of $S$. Then if there is a neighborhood of $\varepsilon > 0$ such that $(s-\varepsilon, s+\varepsilon)$ does not have a point of S, then $(s-\varepsilon)$ is an upper bound of $S$ that's less than $s$. Thus we have a contradiction that $s$ is the least upper bound of $S$. Then $s$ is a cluster point of $S$. 
+        If $s \notin S$, then $s$ is a cluster point of $S$. By definition, $s$ is a cluster point of $S$ if:
+        
+        \textcircled{1} $ \forall \varepsilon > 0, S $ contains infinitely many points of $ (s-\varepsilon, s+\varepsilon) $. OR 
+        
+        \textcircled{2} $ \forall \varepsilon > 0, S $ contains some point other than $s$ of $ (s-\varepsilon, s+\varepsilon) $.
+
+        Then we can show that there exists a point $p \in S$ such that $ p \neq s $ and $ p $ exists in the $\varepsilon$-neighborhood of $s$. Since $s - \varepsilon < s$, and $s$ is the least upper bound of $S$, $\exists p$ such that $p > s - \varepsilon$. Then $ p \leq s $ as $p \in S$ which means $p \in (s - \varepsilon, s] \in (s-\varepsilon, s+\varepsilon) $. Then if $p = s$, then $s = sup$ $S$. If $p \neq s$, then \textcircled{2} is satisfied as there exists some point other than $s$ in $ (s-\varepsilon, s+\varepsilon) $ which means that $s$ is a cluster point of $S$. 
+        
+        Hence proved.
+
+
+    \end{solution}
+
+    \question
+    \textbf{Exercise 7.4 Problem 3} \\ We say that $x$ is a ``right" cluster point of a set $S$, if for any $ \varepsilon > 0, S \cap (x, x + \varepsilon) \neq \emptyset $, and similarly for ``left" cluster points. We could also insist that these intersections be infinite.
+    \begin{parts}
+        \part
+        Show that the two definitions of right cluster point suggested above are equivalent, and the two definition of left cluster point suggested above are equivalent.
+        \begin{solution}
+            If x is a ``right'' cluster point of a set $S$, then $ \forall \varepsilon > 0, S \cap (x, x + \varepsilon) \neq \emptyset \iff S \cap (x, x + \varepsilon) $ is infinite.
+
+            \textcircled{1} If $ S \cap (x, x + \varepsilon) $ is infinite, then it is obviously not empty as it contains infinitely many points. Hence is trivial. 
+            So $ S \cap (x, x + \varepsilon) $ is infinite $ \implies \forall \varepsilon > 0, S \cap (x, x + \varepsilon) \neq \emptyset $ is proved. \newline
+
+            \textcircled{2} $ \forall \varepsilon > 0, S \cap (x, x + \varepsilon) \neq \emptyset \implies S \cap (x, x + \varepsilon) $ is infinite. \newline Let $ x_0 \in S \cap (x, x + \varepsilon) $ \newline Let $ \varepsilon_1 : | x_0 - x_1 | > 0 $ and $ \varepsilon_2 : |x_1 - x_2| > 0 $. \newline Then $ \varepsilon_i = |x_{i-1} - x_i| > 0 $. \newline Let $ x_i \in S \cap (x, x + \varepsilon) $. \newline Then since each $ \varepsilon_i \leq \varepsilon_{i-1}$, \newline $ \implies \{x_0, x_1, x_2, ... \} \subseteq S \cap (x, x + \varepsilon_{i}) \subseteq S \cap (x, x + \varepsilon_{i-1}) \subseteq S \cap (x, x + \varepsilon) $ implying that $ \{x_0, x_1, x_2, ... \} $ is an infinite set which implies the second definition and proves  $ \forall \varepsilon > 0, S \cap (x, x + \varepsilon) \neq \emptyset \implies S \cap (x, x + \varepsilon) $ is infinite.
+            
+            Hence proved for ``right'' cluster points. 
+
+            The same argument can be used for ``left'' cluster points with $ (x - \varepsilon, x) $ and each $ \varepsilon_i \ge \varepsilon_i-1 $. 
+
+            \begin{flushright}
+                [*Proof done with help taken from similar idea done in class]
+            \end{flushright}
+
+
+        \end{solution}
+
+        \part
+        Show that every right cluster point is a cluster point, but that not every cluster point is a right cluster point. Similarly for left cluster points.
+        \begin{solution}
+            (a) follows the definition of a cluster point that is: 
+
+            \textcircled{1} $ \forall \varepsilon > 0, S $ contains infinitely many points of $ (s, s+\varepsilon) $. OR 
+        
+            \textcircled{2} %$ \forall \varepsilon > 0, S $ contains some point other than $s$ of $ (s-\varepsilon, s+\varepsilon) $. that is
+            $\forall \varepsilon > 0,  S \cap (s, s + \varepsilon) \neq \emptyset $
+
+            Therefore, every right cluster point is also a cluster point. 
+            \newline However, not every cluster point is a right cluster point. 
+        \end{solution}
+
+        \part
+        Examine the examples of cluster points in the chapter. Which are right cluster points and which are left cluster points?
+        \begin{solution}
+            $ \frac{1}{2} $ is both a right and left cluster point of $(0, 1)$
+
+            0 is a right cluster point of $ H = \{1, \frac{1}{2}, \frac{1}{3}, ... \} $
+        \end{solution}
+
+        \part
+        If $x$ is a cluster point of $S$, must it be the case that $x$ is either a right cluster point or a left cluster point of $S$?
+        \begin{solution}
+            % \textbf{\underline{*NOT SURE ABOUT THIS ANSWER AT ALL}}
+
+            Yes it must be the case that $x$ is either a right cluster point or a left cluster point of $S$ if $x$ is a cluster point of $S$.
+
+            If $x$ is a cluster point, then by definition, $S$ contains infinitely many points of $ (x - \varepsilon, x + \varepsilon) $ or $S$ contains some point other than $x$ of $ (x - \varepsilon, x + \varepsilon) $.
+
+            If $x$ is right cluster point, then it contains either infinitely many points of $ (x, x + \varepsilon) $ or some point other than $x$ of $ (x, x + \varepsilon) $. 
+
+            If $x$ is a left cluster point, then it contains either infinitely many points of $(x - \varepsilon, x)$ or some point other than $x$ of $ (x - \varepsilon, x) $. 
+            
+            It is obvious that these two events are mutually exclusive and that only one can occur at one time as they pertain to different halfs of the epsilon neighborhood. Hence if $x$ is a cluster point, then it must be either a right, or a left cluster point.
+        \end{solution}
+    \end{parts}
+    
+    \question
+    \textbf{Exercise 9.2 Problem 6}
+    \begin{parts}
+        \part
+        Show that lim$x_n = L$ if and only if the sequence described by $ x_1, L, x_2, L, x_3, L, ..., $ converges.
+        \begin{solution}
+            We have to show that lim$x_n = L \iff x_1, L, x_2, L, x_3, L, ..., $ converges.
+
+            \textcircled{1} $ x_1, L, x_2, L, x_3, L, ... \text{ converges} \implies \text{lim}x_n = L $ is trivial as if a sequence converges, then the subsequence must also converge by Theorem $9.18$. $ L, L, L, ... $ must converge to $L$, as it is a subsequence of the prevoius sequence, therefore $x_1, x_2, x_3,...$ must also converge to $L$ as for this sequence, $L$ would have a neighborhood such that the subsequence would also eventually fall in every neighborhood of $L$. Hence proved. 
+
+            \textcircled{2} lim$x_n = L \implies x_1, L, x_2, L, x_3, L, ... $ converges.
+
+            By the definition, $$\text{lim}x_n = L \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, \forall n > N, | x_n - L | < \varepsilon, x_n \in \aleph_\varepsilon(L) $$ 
+
+            Then since $L$ also exists in every epsilon neighborhood, $L \in \aleph_\varepsilon(L)$ $$ \forall \varepsilon > 0, \exists n > N \text{ st } x_n \in \aleph_\varepsilon(L) \land L \in \aleph_\varepsilon (L) $$
+
+            Hence, $ x_1, L, x_2, L, x_3, L, ... $ also converges.
+
+            Hence proved that lim$x_n = L \iff x_1, L, x_2, L, x_3, L, ..., $ converges.
+        \end{solution}
+        
+        \part
+        Show that lim$x_n =$ lim$y_n$ if and only if the sequence described by $ x_1, y_1, x_2, y_2, ..., $ converges.
+        \begin{solution}
+            We have to show that lim$ x_n = \text{lim}y_n \iff x_1, y_1, x_2, y_2, ... $ converges.
+
+            \textcircled{1} $ x_1, y_1, x_2, y_2, ... $ converges $ \implies \text{lim}x_n = \text{lim}y_n $
+
+            This is trivial by Theorem $9.18$ that if a sequence converges, then then every subsequence would also converge to the same limit. The subsequences can be made as $ x_1, x_2, ... $ and $ y_1, y_2, ... $. Since the first sequence converges, these sequences must also eventually fall into the same epsilon neighborhoods as the sequence, therefore these subsequences converge to the same limit and $ \text{lim}x_n = \text{lim}y_n $. Hence proved.
+            
+            \textcircled{2} $ \text{lim}x_n = \text{lim}y_n \implies x_1, y_1, x_2, y_2, ... $ converges.
+
+            This can be done by contradiction. Suppose that $ \text{lim}x_n \neq \text{lim}y_n $ and that they converge to different limits. Then by the corollary from Theorem $9.18$, if there are two subsequences of a sequence that converge to different limits, then the sequence must be divergent. As if a sequence is convergent, then all subsequences must eventually fall into the same epsilon neighborhood as the sequence, however, if the sequence is divergent, then different subsequences would eventually converge to differnet epsilon neighborhoods, hence would converge to different limits. Hence we have a contradiction, as lim$ x_n = \text{lim}y_n $. Therefore the sequence must be convergent for this to be true. Therefore lim$ x_n = \text{lim}y_n \implies x_1, y_1, x_2, y_2, ... $ converges.
+
+            Hence proved that lim$ x_n = \text{lim}y_n \iff x_1, y_1, x_2, y_2, ... $ converges.
+        \end{solution}
+    \end{parts}
+
+    \question
+    \textbf{Exercise 9.3 Problem 5}
+    \begin{parts}
+        \part
+        Show that if lim$x_n = L$, then $|x_n| = |L|$.
+        \begin{solution}
+            By definition, a number $L$ is called a limit of $(x_n)$ if $ \forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that whenever $n > N_\varepsilon$, then $ |x_n - L| < \varepsilon$.
+
+            Then:
+            \begin{align*}
+                \text{lim}x_n = L & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, |x_n - L| < \varepsilon \\ 
+                & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n| - |L|| \leq |x_n - L| < \varepsilon \\
+                & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n| - |L|| < \varepsilon \\ 
+                \text{lim}|x_n| = |L| & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n| - |L|| < \varepsilon  
+            \end{align*}
+            Hence shown.
+        \end{solution}
+        
+        \part
+        Show that the converse of (a) is not true.
+        \begin{solution}
+            % Let $x_n = -1 + \frac{1}{n}$ which means lim$x_n = -1 \implies L = -1$. 
+            Let $|x_n| = |1 + \frac{1}{n}|$ which means lim$|x_n| = 1 \implies |L| = 1$.
+
+            However, deriving $x_n$ from this gives \textcircled{1} $x_n = -1 - \frac{1}{n}$ or \textcircled{2} $ x_n = 1 + \frac{1}{n}$. However, the limits are different. Hence the converse is not true. 
+            
+        \end{solution}
+        
+        \part
+        Show that if lim$|x_n| = 0$, then lim$x_n = 0$
+        \begin{solution}
+            From (a), lim$|x_n| = |L| \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n| - |L|| < \varepsilon $.
+            
+            Then 
+            \begin{align*}
+                \text{lim}|x_n| = 0 & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n| - 0| < \varepsilon \\ 
+                & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, ||x_n|| < \varepsilon \\ 
+                (\text{working only on $||x_n||$}) & \implies ||x_n|| \leq | x_n | \\ 
+                & \implies |x_n| < \varepsilon \\ 
+                & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, |x_n | < \varepsilon \\ 
+                \text{lim}x_n = 0 & \implies \forall \varepsilon > 0, \exists N \in \mathbb{N}, |x_n - 0| < \varepsilon
+            \end{align*}
+            Therefore, if lim$|x_n| = 0$, then lim$x_n = 0$
+        \end{solution}
+
+        \part
+        What property of 0 makes (c) true?
+        \begin{solution}
+            0 is neither negative nor positve. This makes 0 a unique number and $|0|$ gives only one unique solution that is 0. 
+        \end{solution}
+    \end{parts}
+
+    \question
+    \textbf{Exercise 9.5 Problem 2}
+    \begin{parts}
+        \part
+        Give an example to show that it is possible to have lim$(x_n y_n)$ exist without having the lim$x_n$ or lim$y_n$ exist.
+        \begin{solution}
+            Consider a series $x_n$ such that $ x_n = 1, -1, 1, -1, 1,... $
+            
+            Consider a series $ y_n $ such that $ y_n = -1, 1, -1, 1, -1, 1, ... $ 
+
+            Then lim$ x_n $ does not exist and lim$ y_n $ does not exist.
+
+            However, $ x_ny_n = -1, -1, -1, -1, ... $ for which the limit exists, lim$ (x_ny_n) = -1 $
+
+            Hence proved.
+        \end{solution}
+        
+        \part
+        If lim$(x_n + y_n)$ exists and lim$x_n$ exists, must it be the case that lim$y_n$ exists?
+        \begin{solution}
+            Yes it must be the case.
+
+            If lim$(x_n + y_n)$ exists and lim$x_n$, //
+            Let lim$(x_n + y_n) = L$ and lim$ x_n = m$.
+
+            By the properties of limits, we know that lim$ (x_n + y_n) = \text{lim}x_n + \text{lim}y_n $ \\ 
+            $ \implies L = m + \text{lim}y_n \implies \text{lim}y_n = L - m $
+
+            Let $ L - m = n $ Then lim$y_n = n$
+            
+            Since both $L \text{ and } m $ exists, then $n$ must also exist. Therefore, lim$y_n$ must exist.
+
+            It can be better(complexer better) understood by considering, $ |x_n - x| < \frac{\varepsilon}{2}, \forall n > m $ and $ |y_n - y| < \frac{\varepsilon}{2}, \forall n > n $ where $m$ and $n$ are limits of $x_n$ and $y_n$.
+            
+            Consequently, $$ | (x_n + y_n) - (x + y) | = | (x_n - x) + (y_n - y) | \leq |x_n - x| + |y_n - y|\leq \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon, \forall n \geq N = \text{max}\{m, n\}$$
+
+            Hence the sequence $ (x_n + y_n)$ converges and lim$(x_n + y_n) = $ lim$x_n$ + lim$y_n$ and they all exist.
+        \end{solution}
+
+        \part
+        If lim$(x_n y_n)$ exists and lim$x_n$ exists, must it be the case that lim$y_n$ exists?
+        \begin{solution}
+            No it must not always be the case.
+            
+            Let lim$x_n = \text{lim}\frac{1}{n^3}$ and let lim$y_n = n$.
+
+            Then lim$(x_n y_n) = \text{lim}\frac{1}{n^2} = 0$ which exists. lim$ x_n $ exists that is 0, however, lim$y_n$ does not exist as it approaches $\infty$ and is not defined.
+            
+            Therefore, it is not always the case that lim$y_n$ will exist if lim$(x_ny_n)$ exists and lim$x_n$ exists.
+        \end{solution}
+    \end{parts}
+\end{questions}
+
+\end{document}

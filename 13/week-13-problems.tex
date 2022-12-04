@@ -30,9 +30,9 @@
 \begin{questions}
 	\question[1] If \(S\) is a set that is bounded above, show that \(\sup{S}\) is either an element of \(S\) or is a cluster point of \(S\).
 	\begin{solution}
-		
+		If \(\sup{S}\in S\), then you are done. Suppose \(\sup{S}\notin S\). Let, \(x=\sup{S}\). We argue now that \(x\) is a cluster point. By definition, it is enough to argue that for any \(\varepsilon>0\), there is a point \(z\neq x\) such that \(z\in S\) and \(z\) lies in the \(\varepsilon\)-neighborhood of \(x\). To this end, note that \(x-\varepsilon<x\) and because \(x\) is the least upper bound of \(S\), there is \(z\in S\) such that \(z>x-\varepsilon\). Because \(z\in S\), you have \(z\leq x\) so that \(z\in(x-\varepsilon,x]\subseteq (x-\varepsilon,x+\varepsilon)\). Finally, because \(z\in S\) and \(x\notin S\), \(z\neq x\). \hfill\qed
 	\end{solution}
-	\newpage
+	
 	\question[4] We may say that \(x\) is a "right" cluster point of a set \(S\) if, for any \(\varepsilon>0,S\cap(x,x+\varepsilon)\neq\emptyset\), and similarly for "left" cluster points. We could also insist that these intersections be infinite.
 	\begin{parts}
 		\part Show that the two definitions of right cluster point suggested above are equivalent, and the two definition of left cluster point suggested above are equivalent.
@@ -49,11 +49,7 @@
 				\[
 					\forall\varepsilon>0,S\cap(x,x+\varepsilon)\neq\emptyset\implies S\cap(x,x+\varepsilon)\mbox{ is infinite}
 				\]
-				Let
-				\[
-					x_0\in S\cap(x,x+\varepsilon)
-				\]
-				and \(\forall n\in\mathbb{N}\),
+				Let \(x_0\in S\cap(x,x+\varepsilon)\) and \(\forall n\in\mathbb{N}\),
 				\[
 					\varepsilon_{n}:=\mid x_{n-1}-x\mid >0
 				\]
@@ -77,14 +73,18 @@
 		\end{solution}
 		\part Show that every right cluster point is a cluster point, but that not every cluster point is a right cluster point. Similarly for left cluster points.
 		\begin{solution}
-				We have prove this in (a) that every right cluster point is a cluster point. Now we would prove that not every cluster point is a right cluster point. Let \(S\) be a set and \(x\) be a cluster point of \(S\). We would show that \(x\) is not a right cluster point of \(S\). Let \(\varepsilon>0\) and \(\forall n\in\mathbb{N}\), \(\displaystyle\varepsilon_n:=\frac{\varepsilon}{n}\). Then,  
-				\[
-					\forall n\in\mathbb{N},S\cap(x,x+\varepsilon_n)=\emptyset\implies x\mbox{ is not a right cluster point of }S
-				\]
-				Similarly, it is for left cluster points.\hfill\qed
+				We have prove this in (a) that every right cluster point is a cluster point. Now we would prove that not every cluster point is a right cluster point. Consider a set
+				\[S:=\left\lbrace-\frac{1}{n}\bigg| n\in\mathbb{N}\right\rbrace\]
+				0 is the cluster point of \(S\) but it is not a right cluster point. Similarly, consider another set,
+				\[S:=\left\lbrace\frac{1}{n}\bigg| n\in\mathbb{N}\right\rbrace\]
+				0 is the cluster point of \(S\) but it is not a left cluster point.\hfill\qed
+		\end{solution}
+		
+		\part Examine the examples of cluster points in the chapter. Which are right cluster points and which are left cluster points?
+		\begin{solution}
+			\(\displaystyle\frac{1}{2}\) is both a right and left cluster point of \((0, 1)\). 0 is a right cluster point of \(\displaystyle H = \left\lbrace 1, \frac{1}{2}, \frac{1}{3}, \cdots \right\rbrace\).
 		\end{solution}
 		\newpage
-		% \part Examine the examples of cluster points in the chapter. Which are right cluster points and which are left cluster points?
 		\part If \(x\) is a cluster point of \(S\), must it be the case that \(x\) is either a right cluster point or a left cluster point of \(S\)?
 		\begin{solution}
 				We have to prove that,
@@ -129,7 +129,7 @@
 				For any convergent sequence, its subsequence is also converges and converges to the same limit. \(L,L,L,\cdots\) converges to \(L\) and it is a subsequence of \(x_1,L,x_2,L,x_3,L,\cdots\), therefore \(x_1,x_2,x_3,\cdots\) must also converge to \(L\).
 			\hfill\qed
 		\end{solution}
-		\newpage
+	\newpage
 		\part Show that \(\lim{x_n}=\lim{y_n}\) if and only if the sequence described by \(x_1, y_1, x_2, y_2, \cdots\), converges.
 		\begin{solution}
 				We have to prove that,
@@ -163,7 +163,7 @@
 		\end{solution}
 		\part Show that the converse of (a) is not true.
 		\begin{solution}
-			Let \(\displaystyle\mid x_n\mid=1+\frac{1}{2^n}\) then, \(\lim{\mid x_n\mid}=1=\mid L\mid\). But \(x_n\) can be equal to \(1+\frac{1}{2^n}\) or \(-1-\frac{1}{2^n}\) and the limit of the respective sequence are different. Therefore, the converse of (a) is not true.\hfill\qed
+			Let \(\displaystyle\mid x_n\mid=1+\frac{1}{2^n}\) then, \(\lim{\mid x_n\mid}=1=\mid L\mid\). But \(x_n\) can be equal to \(\displaystyle 1+\frac{1}{2^n}\) or \(\displaystyle-1-\frac{1}{2^n}\) and the limit of the respective sequence are different. Therefore, the converse of (a) is not true.\hfill\qed
 		\end{solution}
 		\newpage
 		\part Show that if \(\lim{\mid x_n\mid}=0\), then \(\lim{x_n}=0\).
@@ -177,27 +177,73 @@
 		\end{solution}
 		\part What property of 0 makes (c) true?
 		\begin{solution}
-			\(\mid 0\mid\) is unique, that is \(0\).\hfill\qed
+			For \(\mid a\mid=0\), \(a\) is unique, that is \(a=0\).\hfill\qed
 		\end{solution}
 	\end{parts}
 	\question[4] \begin{parts}
 		\part Give an example to show that it is possible to have \(\lim(x_n + y_n)\) exist without having \(\lim x_n\) or \(\lim y_n\) exist.
-		\begin{solution}
-			
-		\end{solution}
 		\part Give an example to show that it is possible to have \(\lim(x_ny_n)\) exist without having \(\lim x_n\) or \(\lim y_n\) exist.
 		\begin{solution}
-			
+			Consider two sequences \(x_{n}:=\{(-1)^n\}_{n\in\mathbb{N}}\) and \(y_{n}:=\{(-1)^{n+1}\}_{n\in\mathbb{N}}\) then, \(\nexists\lim{x_n}\) and \(\nexists\lim{y_n}\). But, \(x_n+y_n=\{0\}_{n\in\mathbb{N}}\) and \(\exists\lim{(x_n+y_n)}=0\). And, \(x_ny_n=\{-1\}_{n\in\mathbb{N}}\) and \(\exists\lim{(x_ny_n)}=-1\).
+			\hfill\qed
 		\end{solution}
 		\part If \(\lim(x_n + y_n)\) exists and \(\lim x_n\) exists, must it be the case that \(\lim y_n\) exists?
 		\begin{solution}
-
+			\[
+				\forall x_n,y_n,\exists \lim{(x_n+y_n)} \land \exists \lim{x_n}\implies \exists \lim{y_n}
+			\]
+			Let \(\lim{(x_n+y_n)}=L\) and \(\lim{x_n}=p\)
+			\[
+				\exists\lim{x_n}=p\implies\forall\varepsilon_p>0,\exists N\in\mathbb{N}\ni\forall n>N,\mid x_n-p\mid<\varepsilon_p
+			\]
+			\[
+				\exists\lim{(x_n+y_n)}=L\implies\forall\varepsilon_L>0,\exists N\in\mathbb{N}\ni\forall n>N,\mid x_n+y_n-L\mid<\varepsilon_L
+			\]
+			Now we will manipulate (algebrically) the above two inequalities to get \(\exists\lim{y_n}\). 
+			\begin{align*}
+				p-\varepsilon_p&<x_n<p+\varepsilon_p\\
+				\implies-\varepsilon_p-p&<-x_n<\varepsilon_p-p\\
+				L-\varepsilon_L&<x_n+y_n<L+\varepsilon_L\\
+				\implies L-p-(\underbrace{\varepsilon_L+\varepsilon_p}_{\varepsilon'})&<y_n<L-p+\underbrace{\varepsilon_L+\varepsilon_p}_{\varepsilon'}\\
+				\implies L-p-\varepsilon'&<y_n<L-p+\varepsilon'\\
+				\implies \mid y_n - L + p \mid & <\varepsilon'\\
+				\implies \lim{y_n} & = L-p
+			\end{align*}
+			The \(\lim{y_n}\) must exists.
+			\hfill\qed
 		\end{solution}
 		\part If \(\lim(x_ny_n)\) exists and \(\lim x_n\) exists, must it be the case that \(\lim y_n\) exists?
 		\begin{solution}
-
+			Consider two sequences \(\displaystyle x_n:=\left\lbrace\frac{1}{n^2}\right\rbrace_{n\in\mathbb{N}}\) and \(\displaystyle y_n:=\left\lbrace n\right\rbrace_{n\in\mathbb{N}}\). The product of these sequences is \(\displaystyle x_ny_n=\left\lbrace\frac{1}{n}\right\rbrace_{n\in\mathbb{N}}\). We have \(\lim{(x_ny_n)}=0\) and \(\lim{x_n}=0\). But, \(\nexists\lim{y_n}\).
+			\hfill\qed
 		\end{solution}
 	\end{parts}
 \end{questions}
 
 \end{document}
+
+% If \(\lim(x_n + y_n)\) and \(\lim x_n\) exists, Let \(\lim(x_n + y_n) = L\) and \(\lim x_n = m\).
+
+% By the properties of limits, we know that \(\lim(x_n + y_n) = \text{lim}x_n + \text{lim}y_n \)
+% \( \implies L = m + \text{lim}y_n \implies \text{lim}y_n = L - m \)
+
+% Let \( L - m = n \) Then \(\lim y_n = n\)
+
+% Since both \(L\) and  \(m\) exists, then \(n\) must also exist. Therefore, \(\lim y_n\) must exist.
+
+% It can be better (complexer better) understood by considering,
+% \[ |x_n - x| < \frac{\varepsilon}{2}, \forall n > m \]
+% and
+
+% \[ |y_n - y| < \frac{\varepsilon}{2}, \forall n > n \]
+
+% where \(m\) and \(n\) are limits of \(x_n\) and \(y_n\).
+
+% Consequently,
+% \begin{align*}
+% 	| (x_n + y_n) - (x + y) | = | (x_n - x) + (y_n - y) | \leq & \; |x_n - x| + |y_n - y|\\
+% 	\leq & \; \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon, \forall n \geq N = \max\{m, n\}
+% \end{align*}
+
+% Hence the sequence \(x_n + y_n\) converges and \(\lim(x_n + y_n) = \lim x_n + \lim y_n\) and they all exist.
+% \hfill\qed
