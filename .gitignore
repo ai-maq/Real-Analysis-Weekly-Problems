@@ -4,3 +4,5 @@
 *.fls
 *.synctex.gz
 *.fdb_latexmk
+*.out
+aa0*
